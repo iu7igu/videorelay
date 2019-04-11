@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import time
 import configparser
@@ -19,7 +21,7 @@ if abilitalog:
     log=open(percorsolog, "w")
 	
 def preleva():
-    os.system("ffmpeg -y -f video4linux2 -i /dev/video"+canale+" -vframes 1 "+ percorso)
+    os.system("ffmpeg -y -f video4linux2 -i /dev/video"+canale+" -vframes 1 "+ percorso + "> /dev/null")
     if abilitalog:
         log.write(datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S') + "-----> scattata immagine - peso: "+ str(os.path.getsize(percorso))+"\n")
         
